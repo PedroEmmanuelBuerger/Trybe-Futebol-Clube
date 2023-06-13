@@ -12,4 +12,12 @@ export default class TeamService {
     const allTeams = await this.TeamsModel.findAll();
     return { status: null, data: allTeams };
   }
+
+  public async getTeamId(id: number): Promise<ServiceResponse<ITeams>> {
+    const team = await this.TeamsModel.findById(id);
+    if (team) {
+      return { status: null, data: team };
+    }
+    return { status: 404, data: { message: 'USER_NOT_FOUND' } };
+  }
 }

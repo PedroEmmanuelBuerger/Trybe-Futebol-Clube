@@ -11,4 +11,13 @@ export default class TeamModel implements ICRUDModel {
       { id, teamName }
     ));
   }
+
+  async findById(id: ITeams['id']): Promise<ITeams | null> {
+    const team = await this.model.findByPk(id);
+    if (!team) {
+      return null;
+    }
+    const { teamName }: ITeams = team;
+    return { id, teamName };
+  }
 }
