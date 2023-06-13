@@ -2,9 +2,9 @@ FROM node:16.14-alpine
 
 WORKDIR /app-backend
 
-COPY ../../package.json ../../package-lock.json ../../packages.npm ./
+COPY ./package.json ./package-lock.json ./
 
-RUN npm ci --only=production
+RUN npm install
 
 COPY . .
 
