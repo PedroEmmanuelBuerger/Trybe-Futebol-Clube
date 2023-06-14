@@ -18,8 +18,8 @@ export default class UserController {
     res.status(200).json(serviceResponse.data);
   }
 
-  public async getRole(req: AuthenticatedRequest, res: Response) {
-    const { token } = req;
+  public async getRole(req: Request, res: Response) {
+    const { token } = req as AuthenticatedRequest;
     const role = await this.UsersService.getRoleService(token.id);
     return res.status(200).json({ role: role.data });
   }

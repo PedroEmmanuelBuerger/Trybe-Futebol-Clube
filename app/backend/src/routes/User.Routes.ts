@@ -2,7 +2,6 @@ import { Request, Router, Response } from 'express';
 import UserController from '../controller/UserController';
 import Validations from '../middlwares/LoginMiddle';
 import validateToken from '../middlwares/TokkenMiddle';
-import { ITokenObjRes } from '../Interfaces/ITokenObjRes';
 
 const UsersController = new UserController();
 
