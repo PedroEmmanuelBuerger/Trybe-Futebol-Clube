@@ -18,6 +18,6 @@ export default class TeamService {
     if (team) {
       return { status: null, data: team };
     }
-    return { status: 404, data: { message: 'USER_NOT_FOUND' } };
+    return { status: 404, data: { message: 'TEAM_NOT_FOUND' } };
   }
 }

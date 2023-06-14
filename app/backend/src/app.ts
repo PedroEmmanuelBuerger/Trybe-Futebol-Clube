@@ -1,5 +1,6 @@
 import * as express from 'express';
 import Router from './routes';
+import ErrorMiddleware from './middlwares/ErrorMiddle';
 
 class App {
   public app: express.Express;
@@ -28,6 +29,7 @@ class App {
 
   private routes(): void {
     this.app.use(Router);
+    this.app.use(ErrorMiddleware.handle);
   }
 
   public start(PORT: string | number): void {
