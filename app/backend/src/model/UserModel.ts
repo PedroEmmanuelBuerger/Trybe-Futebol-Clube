@@ -18,4 +18,13 @@ export default class UserModel implements ICRUDModel {
     const { id, username, role, password }: IUsers = user;
     return { id, username, role, email, password };
   }
+
+  async findById(id: number): Promise<IUsers | null> {
+    const user = await this.model.findOne({ where: { id } });
+    if (!user) {
+      return null;
+    }
+    const { username, role, email, password }: IUsers = user;
+    return { id, username, role, email, password };
+  }
 }

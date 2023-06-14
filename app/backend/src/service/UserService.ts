@@ -25,4 +25,12 @@ export default class UserService {
     const token = jwtUtil.sign({ id: user.id });
     return { status: null, data: { token } };
   }
+
+  public async getRoleService(id: number): Promise<ServiceResponse<string>> {
+    const user = await this.UsersModel.findById(id);
+    if (!user) {
+      return { status: 401, data: { message: 'USER_NOT_FOUND' } };
+    }
+    return { status: null, data: user.role };
+  }
 }

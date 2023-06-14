@@ -7,7 +7,9 @@ export interface ICRUDModelCreator {
 
 export interface ICRUDModelFInd {
   findByPk(email: string): Promise<IUsers | null>,
+  findById(id: number): Promise<IUsers | null>,
 }
+
 export interface ICRUDModel
   extends
   ICRUDModelCreator,
