@@ -8,6 +8,9 @@ export default class UserController {
 
   public async makeLogin(req: Request, res: Response) {
     const serviceResponse = await this.UsersService.loginService(req.body);
+    if (serviceResponse.status) {
+      return res.status(serviceResponse.status).json(serviceResponse.data);
+    }
     res.status(200).json(serviceResponse.data);
   }
 }
