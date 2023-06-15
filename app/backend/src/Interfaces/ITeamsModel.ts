@@ -5,4 +5,4 @@ export interface ICRUDModelReader {
   findById(id: number): Promise<ITeams | null>,
 }
 
-export type ICRUDModel = ICRUDModelReader;
+export type ICRUDModelT = ICRUDModelReader;

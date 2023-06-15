@@ -30,7 +30,9 @@ export default class MatchesController {
     const { homeTeamGoals, awayTeamGoals, homeTeamId, awayTeamId } = req.body;
     const newMatch = await this.MatchsServices
       .addMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
-
+    if (newMatch.status) {
+      return res.status(newMatch.status).json(newMatch.data);
+    }
     res.status(201).json(newMatch.data);
   }
 }

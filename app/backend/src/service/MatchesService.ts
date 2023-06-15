@@ -1,11 +1,14 @@
 import { ICRUDModel } from '../Interfaces/IMatchesModels';
+import { ICRUDModelT } from '../Interfaces/ITeamsModel';
 import MatchesModel from '../model/MatchesModel';
 import { IMatches } from '../Interfaces/IMatches';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import TeamModel from '../model/TeamModel';
 
 export default class MatchesService {
   constructor(
     private MatchsModel: ICRUDModel = new MatchesModel(),
+    private TeamsModel: ICRUDModelT = new TeamModel(),
   ) { }
 
   public async getAllMatchs(query: string | null): Promise<ServiceResponse<IMatches[]>> {
@@ -36,6 +39,11 @@ export default class MatchesService {
 
   public async addMatch(hid: number, aid: number, hg: number, ag: number)
     : Promise<ServiceResponse<IMatches>> {
+    const homeT = await this.TeamsModel.findById(hid);
+    const awayT = await this.TeamsModel.findById(aid);
+    if (!homeT || !awayT) {
+      return { status: 404, data: { message: 'There is no team with such id!' } };
+    }
     const newMatch = await this.MatchsModel.addMatch(hid, aid, hg, ag);
 
     return { status: null, data: newMatch };
