@@ -14,4 +14,10 @@ router.patch(
   (req: Request, res: Response) => TeamsControler.attFInishMatch(req, res),
 );
 
+router.patch(
+  '/:id',
+  TokenMiddle.validateToken,
+  (req: Request, res: Response) => TeamsControler.attMatch(req, res),
+);
+
 export default router;

@@ -17,4 +17,12 @@ export default class MatchesController {
 
     res.status(200).json(result.data);
   }
+
+  public async attMatch(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const result = await this.MatchsServices
+      .attMatch(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
+    res.status(200).json(result.data);
+  }
 }

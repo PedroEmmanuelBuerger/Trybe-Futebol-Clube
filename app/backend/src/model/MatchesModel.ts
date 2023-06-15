@@ -21,4 +21,13 @@ export default class MatchsModel implements ICRUDModel {
       { where: { id } },
     );
   }
+
+  async updateMatch(id: number, homeG: number, awayG:number) : Promise<boolean> {
+    await this.model.update(
+      { homeTeamGoals: homeG, awayTeamGoals: awayG },
+      { where: { id } },
+    );
+
+    return true;
+  }
 }

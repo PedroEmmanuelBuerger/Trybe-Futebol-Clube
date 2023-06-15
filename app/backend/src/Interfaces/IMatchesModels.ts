@@ -6,6 +6,7 @@ export interface ICRUDModelReader {
 
 export interface ICRUDUpdate {
   finishMatch(id: number): void;
+  updateMatch(id: number, homeG: number, awayG:number) : Promise<boolean>
 }
 
 export interface ICRUDModel

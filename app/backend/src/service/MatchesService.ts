@@ -26,4 +26,11 @@ export default class MatchesService {
 
     return { status: null, data: { message: 'finished' } };
   }
+
+  public async attMatch(id: number, homeG: number, awayG:number)
+    : Promise<ServiceResponse<object>> {
+    await this.MatchsModel.updateMatch(id, homeG, awayG);
+
+    return { status: null, data: { message: 'Update' } };
+  }
 }
