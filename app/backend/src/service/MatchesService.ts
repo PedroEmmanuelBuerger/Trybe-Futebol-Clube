@@ -8,8 +8,16 @@ export default class MatchesService {
     private MatchsModel: ICRUDModel = new MatchesModel(),
   ) { }
 
-  public async getAllMatchs(): Promise<ServiceResponse<IMatches[]>> {
+  public async getAllMatchs(query: string | null): Promise<ServiceResponse<IMatches[]>> {
     const allMatchs = await this.MatchsModel.findAll();
-    return { status: null, data: allMatchs };
+    if (!query) {
+      return { status: null, data: allMatchs };
+    }
+    if (query === 'true') {
+      const newMatchs = allMatchs.filter((match) => match.inProgress === true);
+      return { status: null, data: newMatchs };
+    }
+    const newMatchs = allMatchs.filter((match) => match.inProgress === false);
+    return { status: null, data: newMatchs };
   }
 }

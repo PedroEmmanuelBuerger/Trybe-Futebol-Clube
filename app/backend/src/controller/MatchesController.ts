@@ -6,8 +6,9 @@ export default class MatchesController {
     private MatchsServices = new MatchesServices(),
   ) { }
 
-  public async GetALlMatches(_req: Request, res: Response) {
-    const serviceResponse = await this.MatchsServices.getAllMatchs();
+  public async GetALlMatches(req: Request, res: Response) {
+    const { inProgress } = req.query;
+    const serviceResponse = await this.MatchsServices.getAllMatchs(inProgress as string);
     res.status(200).json(serviceResponse.data);
   }
 }
