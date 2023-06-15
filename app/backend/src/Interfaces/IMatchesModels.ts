@@ -4,4 +4,11 @@ export interface ICRUDModelReader {
   findAll(): Promise<IMatches[]>,
 }
 
-export type ICRUDModel = ICRUDModelReader;
+export interface ICRUDUpdate {
+  finishMatch(id: number): void;
+}
+
+export interface ICRUDModel
+  extends
+  ICRUDModelReader,
+  ICRUDUpdate {}

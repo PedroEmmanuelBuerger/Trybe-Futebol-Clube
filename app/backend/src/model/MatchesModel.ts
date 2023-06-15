@@ -14,4 +14,11 @@ export default class MatchsModel implements ICRUDModel {
     });
     return matches as unknown as IMatchesInclude[];
   }
+
+  async finishMatch(id: number): Promise<void> {
+    await this.model.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+  }
 }

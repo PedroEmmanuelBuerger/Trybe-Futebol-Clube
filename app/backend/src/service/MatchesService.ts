@@ -20,4 +20,10 @@ export default class MatchesService {
     const newMatchs = allMatchs.filter((match) => match.inProgress === false);
     return { status: null, data: newMatchs };
   }
+
+  public async attFInishMatch(id: number): Promise<ServiceResponse<object>> {
+    await this.MatchsModel.finishMatch(id);
+
+    return { status: null, data: { message: 'finished' } };
+  }
 }
