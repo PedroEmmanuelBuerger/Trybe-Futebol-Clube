@@ -1,3 +1,4 @@
+import { IMatches } from '../Interfaces/IMatches';
 import { ICRUDModel } from '../Interfaces/IMatchesModels';
 import SequelizeMatchs from '../database/models/SequelizeMatches';
 import SequelizeTeams from '../database/models/SequelizeTeams';
@@ -29,5 +30,17 @@ export default class MatchsModel implements ICRUDModel {
     );
 
     return true;
+  }
+
+  async addMatch(hid: number, aid: number, hg: number, ag: number): Promise<IMatches> {
+    const newMatch = await this.model.create({
+      homeTeamId: hid,
+      homeTeamGoals: hg,
+      awayTeamId: aid,
+      awayTeamGoals: ag,
+      inProgress: true,
+    });
+
+    return newMatch;
   }
 }

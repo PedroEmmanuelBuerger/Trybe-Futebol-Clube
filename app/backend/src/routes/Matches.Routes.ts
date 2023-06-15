@@ -20,4 +20,10 @@ router.patch(
   (req: Request, res: Response) => TeamsControler.attMatch(req, res),
 );
 
+router.post(
+  '/',
+  TokenMiddle.validateToken,
+  (req: Request, res: Response) => TeamsControler.addMatch(req, res),
+);
+
 export default router;

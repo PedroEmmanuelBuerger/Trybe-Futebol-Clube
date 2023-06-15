@@ -9,7 +9,12 @@ export interface ICRUDUpdate {
   updateMatch(id: number, homeG: number, awayG:number) : Promise<boolean>
 }
 
+export interface ICRUDAdd {
+  addMatch(hid: number, aid: number, hg: number, ag: number) : Promise<IMatches>
+}
+
 export interface ICRUDModel
   extends
   ICRUDModelReader,
+  ICRUDAdd,
   ICRUDUpdate {}

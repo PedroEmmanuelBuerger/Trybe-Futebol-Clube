@@ -33,4 +33,11 @@ export default class MatchesService {
 
     return { status: null, data: { message: 'Update' } };
   }
+
+  public async addMatch(hid: number, aid: number, hg: number, ag: number)
+    : Promise<ServiceResponse<IMatches>> {
+    const newMatch = await this.MatchsModel.addMatch(hid, aid, hg, ag);
+
+    return { status: null, data: newMatch };
+  }
 }
