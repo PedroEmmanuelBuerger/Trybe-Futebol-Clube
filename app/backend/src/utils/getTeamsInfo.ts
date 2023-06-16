@@ -8,6 +8,8 @@ const teamsObj = {
   totalLosses: 0,
   goalsFavor: 0,
   goalsOwn: 0,
+  goalsBalance: 0,
+  efficiency: '',
 };
 
 function verifyWIn(match:IMatches): number {
@@ -31,6 +33,12 @@ function verifyDraw(match: IMatches): number {
   return 0;
 }
 
+function calcPorcent(points: number, games: number) : string {
+  const eficiencia = ((points / (games * 3))) * 100;
+  const arendodado = eficiencia.toFixed(2);
+  return (`${arendodado}`);
+}
+
 function getTeamsInfoHome(teamId: number, teamName: string, matches: IMatches[]) {
   const teamMatchesHome = matches.filter((team) => team.homeTeamId === teamId);
   const team = {
@@ -49,6 +57,8 @@ function getTeamsInfoHome(teamId: number, teamName: string, matches: IMatches[])
 
   team.totalPoints += (team.totalVictories * 3);
   team.totalPoints += team.totalDraws;
+  team.goalsBalance = team.goalsFavor - team.goalsOwn;
+  team.efficiency = calcPorcent(team.totalPoints, team.totalGames);
   return team;
 }
 

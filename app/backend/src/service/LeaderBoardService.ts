@@ -5,6 +5,7 @@ import TeamModel from '../model/TeamModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { ITeamsInfo } from '../Interfaces/ITeamsInfo';
 import getTeamsInfoHome from '../utils/getTeamsInfo';
+import orderTeams from '../utils/orderTeamsEff';
 
 export default class LeaderBoardService {
   constructor(
@@ -19,6 +20,7 @@ export default class LeaderBoardService {
       const infos = getTeamsInfoHome(team.id, team.teamName, allMatches);
       return infos;
     });
-    return { status: null, data: teamsinfo };
+    const result = orderTeams(teamsinfo);
+    return { status: null, data: result };
   }
 }

@@ -7,4 +7,6 @@ export interface ITeamsInfo {
   totalLosses: number,
   goalsFavor: number,
   goalsOwn: number,
+  goalsBalance: number,
+  efficiency: string
 }
