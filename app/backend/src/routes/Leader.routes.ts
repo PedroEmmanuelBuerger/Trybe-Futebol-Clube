@@ -8,4 +8,7 @@ const router = Router();
 router.get('/home', (req: Request, res: Response) => LeadBoardCOntroller
   .getTeamsInfoHome(req, res));
 
+router.get('/away', (req: Request, res: Response) => LeadBoardCOntroller
+  .getTeamsInfoAway(req, res));
+
 export default router;

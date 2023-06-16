@@ -4,7 +4,7 @@ import MatchesModel from '../model/MatchesModel';
 import TeamModel from '../model/TeamModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { ITeamsInfo } from '../Interfaces/ITeamsInfo';
-import getTeamsInfoHome from '../utils/getTeamsInfo';
+import { getTeamsInfoHome, getTeamsInfoAway } from '../utils/getTeamsInfo';
 import orderTeams from '../utils/orderTeamsEff';
 
 export default class LeaderBoardService {
@@ -13,12 +13,20 @@ export default class LeaderBoardService {
     private TeamsModel: ICRUDModelT = new TeamModel(),
   ) { }
 
-  public async getTeamsInfoHome(): Promise<ServiceResponse<ITeamsInfo[]>> {
+  public async getTeamsInfoHome(claf: string): Promise<ServiceResponse<ITeamsInfo[]>> {
     const allTeams = await this.TeamsModel.findAll();
     const allMatches = await this.MatchsModel.findAll();
     const newMatchs = allMatches.filter((match) => match.inProgress === false);
+    if (claf === 'home') {
+      const teamsinfo = allTeams.map((team) => {
+        const infos = getTeamsInfoHome(team.id, team.teamName, newMatchs);
+        return infos;
+      });
+      const result = orderTeams(teamsinfo);
+      return { status: null, data: result };
+    }
     const teamsinfo = allTeams.map((team) => {
-      const infos = getTeamsInfoHome(team.id, team.teamName, newMatchs);
+      const infos = getTeamsInfoAway(team.id, team.teamName, newMatchs);
       return infos;
     });
     const result = orderTeams(teamsinfo);
