@@ -1,19 +1,25 @@
 import { ITeamsInfo } from '../Interfaces/ITeamsInfo';
 
-function drawOrder(teamone: ITeamsInfo, teamtwo: ITeamsInfo): number {
-  if (teamone.totalVictories > teamtwo.totalVictories) {
+function drawOrder(a: ITeamsInfo, b: ITeamsInfo): number {
+  if (a.totalVictories > b.totalVictories) {
     return -1;
+  } if (a.totalVictories < b.totalVictories) {
+    return 1;
   }
-  if (teamone.goalsBalance > teamtwo.goalsBalance) {
+  if (a.goalsBalance > b.goalsBalance) {
     return -1;
+  } if (a.goalsBalance < b.goalsBalance) {
+    return 1;
   }
-  if (teamone.goalsFavor > teamtwo.goalsFavor) {
+  if (a.goalsFavor > b.goalsFavor) {
     return -1;
+  } if (a.goalsFavor < b.goalsFavor) {
+    return 1;
   }
-  return 1;
+  return 0;
 }
 
-function orderTeams(teams:ITeamsInfo[]) : ITeamsInfo[] {
+function orderTeams(teams: ITeamsInfo[]): ITeamsInfo[] {
   teams.sort((a, b) => {
     if (a.totalPoints < b.totalPoints) {
       return 1;
@@ -22,6 +28,7 @@ function orderTeams(teams:ITeamsInfo[]) : ITeamsInfo[] {
     }
     return drawOrder(a, b);
   });
+
   return teams;
 }
 

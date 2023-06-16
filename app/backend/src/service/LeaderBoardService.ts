@@ -16,8 +16,9 @@ export default class LeaderBoardService {
   public async getTeamsInfoHome(): Promise<ServiceResponse<ITeamsInfo[]>> {
     const allTeams = await this.TeamsModel.findAll();
     const allMatches = await this.MatchsModel.findAll();
+    const newMatchs = allMatches.filter((match) => match.inProgress === false);
     const teamsinfo = allTeams.map((team) => {
-      const infos = getTeamsInfoHome(team.id, team.teamName, allMatches);
+      const infos = getTeamsInfoHome(team.id, team.teamName, newMatchs);
       return infos;
     });
     const result = orderTeams(teamsinfo);
