@@ -51,11 +51,11 @@ function calcPorcent(points: number, games: number) : string {
   return (`${arendodado}`);
 }
 
-function getTeamsInfoHome(teamId: number, teamName: string, matches: IMatches[]) {
+function getTeamsInfoHome(teamId: number, teamName: string, matches: IMatches[], obj = teamsObj) {
   const teamMatchesHome = matches.filter((team) => team.homeTeamId === teamId);
   const team = {
     name: teamName,
-    ...teamsObj,
+    ...obj,
   };
   teamMatchesHome.forEach((t) => {
     team.totalGames += 1;
@@ -72,11 +72,11 @@ function getTeamsInfoHome(teamId: number, teamName: string, matches: IMatches[])
   return team;
 }
 
-function getTeamsInfoAway(teamId: number, teamName: string, matches: IMatches[]) {
+function getTeamsInfoAway(teamId: number, teamName: string, matches: IMatches[], obj = teamsObj) {
   const TeamMatchsAway = matches.filter((team) => team.awayTeamId === teamId);
   const team = {
     name: teamName,
-    ...teamsObj,
+    ...obj,
   };
   TeamMatchsAway.forEach((t) => {
     team.totalGames += 1;
@@ -93,4 +93,22 @@ function getTeamsInfoAway(teamId: number, teamName: string, matches: IMatches[])
   return team;
 }
 
-export { getTeamsInfoAway, getTeamsInfoHome };
+function getAllTeamsBoard(teamId: number, teamName: string, matches: IMatches[]) {
+  const teamPointH = getTeamsInfoHome(teamId, teamName, matches);
+  const teamPointA = getTeamsInfoAway(teamId, teamName, matches);
+
+  const newObj = { name: teamName, ...teamsObj };
+  newObj.totalGames = teamPointH.totalGames + teamPointA.totalGames;
+  newObj.goalsFavor = teamPointH.goalsFavor + teamPointA.goalsFavor;
+  newObj.goalsOwn = teamPointH.goalsOwn + teamPointA.goalsOwn;
+  newObj.totalVictories = teamPointH.totalVictories + teamPointA.totalVictories;
+  newObj.totalLosses = teamPointH.totalLosses + teamPointA.totalLosses;
+  newObj.totalDraws = teamPointH.totalDraws + teamPointA.totalDraws;
+  newObj.totalPoints = teamPointH.totalPoints + teamPointA.totalPoints;
+  newObj.goalsBalance = teamPointH.goalsBalance + teamPointA.goalsBalance;
+  newObj.efficiency = calcPorcent(newObj.totalPoints, newObj.totalGames);
+
+  return newObj;
+}
+
+export { getTeamsInfoAway, getTeamsInfoHome, getAllTeamsBoard };

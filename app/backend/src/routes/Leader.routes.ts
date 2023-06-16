@@ -11,4 +11,7 @@ router.get('/home', (req: Request, res: Response) => LeadBoardCOntroller
 router.get('/away', (req: Request, res: Response) => LeadBoardCOntroller
   .getTeamsInfoAway(req, res));
 
+router.get('/', (req: Request, res: Response) => LeadBoardCOntroller
+  .getTeamsAll(req, res));
+
 export default router;
