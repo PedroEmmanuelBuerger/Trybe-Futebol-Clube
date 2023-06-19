@@ -21,6 +21,9 @@ export default class UserController {
   public async getRole(req: Request, res: Response) {
     const { token } = req as AuthenticatedRequest;
     const role = await this.UsersService.getRoleService(token.id);
+    if (role.status) {
+      res.status(role.status).json(role.data);
+    }
     return res.status(200).json({ role: role.data });
   }
 }

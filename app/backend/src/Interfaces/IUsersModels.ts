@@ -1,16 +1,8 @@
-import { NewEntity } from '.';
 import { IUsers } from './IUsers';
-
-export interface ICRUDModelCreator {
-  log(data: NewEntity<IUsers>): Promise<void>,
-}
 
 export interface ICRUDModelFInd {
   findByPk(email: string): Promise<IUsers | null>,
   findById(id: number): Promise<IUsers | null>,
 }
 
-export interface ICRUDModel
-  extends
-  ICRUDModelCreator,
-  ICRUDModelFInd {}
+export type ICRUDModel = ICRUDModelFInd;
