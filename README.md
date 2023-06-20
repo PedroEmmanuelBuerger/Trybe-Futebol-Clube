@@ -38,7 +38,7 @@ cd project-Trybe-Futebol-Clube
 npm install &&  npm run install:apps
 
 Inicie os containers do docker para rodar todos os ambientes.
-docker-compose up -d --build
+npm run compose:up
 
 Para acessar o frontend entre em: http://localhost:3000
 
