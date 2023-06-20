@@ -13,6 +13,7 @@ export default class LeaderController {
 
   public async getTeamsInfoAway(_req: Request, res: Response) {
     const infos = await this.LeadBoardService.getTeamsInfoHome('away');
+    console.log(infos);
     res.status(200).json(infos.data);
   }
 
