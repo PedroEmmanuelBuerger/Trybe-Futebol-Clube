@@ -35,7 +35,7 @@ Instale o Node.js em sua máquina.
 Instale as dependências do projeto(tanto as depenencias gerais quanto as dependencias do backend e frontend).
 cd project-Trybe-Futebol-Clube
 
-npm install &&  npm install:apps
+npm install &&  npm run install:apps
 
 Inicie os containers do docker para rodar todos os ambientes.
 docker-compose up -d --build
