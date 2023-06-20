@@ -19,7 +19,6 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - POO
 - Javascript
 - Node
-- Typescript
 - docker
 - Sequelize
 - Mocha
