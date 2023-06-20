@@ -13,7 +13,7 @@ import teamMocks from './mocks/TeamMocks';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 
-describe('teste de integração funcionalidade: Login', () => {
+describe('teste de integração funcionalidade: Team', () => {
     beforeEach(function () { sinon.restore(); });
     describe('teste da rota de teams', () => {
         describe('testes de sucesso', () => {
