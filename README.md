@@ -7,9 +7,13 @@ Trybe Futebol Clube é um projeto desenvolvido como parte do curso "Trybe" para 
 O projeto possui as seguintes funcionalidades:
 
 Criação de novas partidas: é possivel criar novas partidas caso tenha o cargo de admin.
+
 alterar partidas em andamentos: é possivel mudar o corpo de uma partida que esta em andamento.
+
 finalizar partida: é possivel finalizar uma partida em andamento.
+
 visualização de todas a partidas: è possivel visualizar todas a partidas em andamentos e finalizadas.
+
 visualizar a tabela de pontos: é possivel visualizar a tabela de colocação dos times, sendo isso jogos em casa, jogos fora de casa ou todos os jogos.
 
 ## Tecnologias Utilizadas
@@ -37,6 +41,7 @@ cd project-Trybe-Futebol-Clube
 npm install &&  npm run install:apps
 
 Inicie os containers do docker para rodar todos os ambientes.
+
 npm run compose:up
 
 Para acessar o frontend entre em: http://localhost:3000
