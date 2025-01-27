@@ -1,53 +1,45 @@
+# Trybe Futebol Clube
 
-## Trybe Futebol Clube
+Trybe Futebol Clube is a project developed as part of the "Trybe" course to simulate a Brazilian football league championship, featuring a points system, ongoing and finished matches, login system, and ranking system for all teams in the championship.
 
-Trybe Futebol Clube é um projeto desenvolvido como parte do curso "Trybe" para simular o um campeonato de times de futebol brasileiro, a qual tem o sistema de pontuação, sistema de partidas em andamento e finalizadas, sistema de login e sistema de classificação de todos os times no campeonato.
+## Features
 
-## Funcionalidades
-O projeto possui as seguintes funcionalidades:
+The project includes the following features:
 
-Criação de novas partidas: é possivel criar novas partidas caso tenha o cargo de admin.
+- **Creation of new matches**: New matches can be created if the user has an admin role.
+- **Edit ongoing matches**: The details of an ongoing match can be edited.
+- **Finish a match**: Ongoing matches can be marked as finished.
+- **View all matches**: It’s possible to view both ongoing and finished matches.
+- **View the points table**: Displays the teams' standings, including home games, away games, or all games.
 
-alterar partidas em andamentos: é possivel mudar o corpo de uma partida que esta em andamento.
+## Technologies Used
 
-finalizar partida: é possivel finalizar uma partida em andamento.
+The project was developed using the following technologies:
 
-visualização de todas a partidas: è possivel visualizar todas a partidas em andamentos e finalizadas.
+- **Typescript**
+- **OOP (Object-Oriented Programming)**
+- **Javascript**
+- **Node**
+- **Docker**
+- **Sequelize**
+- **Mocha**
 
-visualizar a tabela de pontos: é possivel visualizar a tabela de colocação dos times, sendo isso jogos em casa, jogos fora de casa ou todos os jogos.
+## Installation
 
-## Tecnologias Utilizadas
-O projeto foi desenvolvido utilizando as seguintes tecnologias:
+To install and run the project locally, follow the steps below:
 
-- Typescript
-- POO
-- Javascript
-- Node
-- docker
-- Sequelize
-- Mocha
-
-## Instalação
-Para instalar e executar o projeto localmente, siga os passos abaixo:
-
-Clone o repositório para sua máquina local.
-git clone git@github.com:PedroEmmanuelBuerger/project-Trybe-Futebol-Clube.git
-
-Instale o Node.js em sua máquina.
-
-Instale as dependências do projeto(tanto as depenencias gerais quanto as dependencias do backend e frontend).
-cd project-Trybe-Futebol-Clube
-
-npm install &&  npm run install:apps
-
-Inicie os containers do docker para rodar todos os ambientes.
-
+1. Clone the repository to your local machine: `git clone git@github.com:PedroEmmanuelBuerger/project-Trybe-Futebol-Clube.git`.
+2. Install Node.js on your machine.
+3. Install the project dependencies (both general dependencies and backend/frontend dependencies): 
+cd project-Trybe-Futebol-Clube npm install && npm run install:apps
+4. Start the Docker containers to run all environments: 
 npm run compose:up
+5. To access the frontend, go to: `http://localhost:3000`.
 
-Para acessar o frontend entre em: http://localhost:3000
+## Key Learnings
 
-## Principais Aprendizados
-Principal aprendizado foi o uso de todas as ferramentas utilizadas no curso da trybe, sendo elas criação de arquivos Dockerfile e Docker Compose, bibliotecas ORM como o Sequelize, programação orientada a objetos com TypeScript e testes unitários com a biblioteca Mocha, entre outros. Tambem foi uma excelente experiencia para fazer pela primeira vez uma aplicação fullStack tendo frontend e backend na mesma aplicação e build.
+The main learning from this project was the use of all the tools provided in the Trybe course, including creating Dockerfile and Docker Compose files, using ORM libraries like Sequelize, Object-Oriented Programming with TypeScript, and unit testing with the Mocha library, among others. It was also an excellent experience building a full-stack application for the first time, integrating both frontend and backend in the same project.
 
-## Conclusão
-A Aplicação trybe futebol clube traz uma interface intuitiva e manipulavel sobre um campeonato de times, a qual é possivel visualizar qual time esta mandante no campeonato, com a classificação de times, fora ver o resultado das partidas a qual ocasionaram nesta pontuação.
+## Conclusion
+
+The Trybe Futebol Clube application provides an intuitive and manageable interface for a football league championship, allowing users to see which team is the home team in the league, view the team rankings, and check match results that contributed to the points standings.
